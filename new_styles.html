@@ -1,0 +1,155 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Demo Image Styles</title>
+  <script src="https://cdn.ckeditor.com/4.16.1/standard-all/ckeditor.js"></script>
+</head>
+
+<body>
+  <textarea cols="80" id="editor1" name="editor1" rows="10" data-sample-short>&lt;p&gt;This is some &lt;strong&gt;sample text&lt;/strong&gt;. You are using &lt;a href=&quot;https://ckeditor.com/&quot;&gt;CKEditor&lt;/a&gt;.&lt;/p&gt;</textarea>
+  <script>
+    // Don't forget to add CSS for your custom styles.
+    CKEDITOR.addCss('figure[class*=easyimage-gradient]::before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; right: 0; }' +
+      'figure[class*=easyimage-gradient] figcaption { position: relative; z-index: 2; }' +
+      '.easyimage-gradient-1::before { background-image: linear-gradient( 135deg, rgba( 115, 110, 254, 0 ) 0%, rgba( 66, 174, 234, .72 ) 100% ); }' +
+      '.easyimage-gradient-2::before { background-image: linear-gradient( 135deg, rgba( 115, 110, 254, 0 ) 0%, rgba( 228, 66, 234, .72 ) 100% ); }'+
+      `.easyimage-frame-1 {
+  background-color:#ddc;
+  border:solid 5vmin #eee;
+  border-bottom-color:#fff;
+  border-left-color:#eee;
+  border-radius:2px;
+  border-right-color:#eee;
+  border-top-color:#ddd;
+  box-shadow:0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+  box-sizing:border-box;
+  display:inline-block;
+  margin:10vh 10vw;
+  height:80vh;
+  padding:8vmin;
+  position:relative;
+  text-align:center;
+  &:before {
+    border-radius:2px;
+    bottom:-2vmin;
+    box-shadow:0 2px 5px 0 rgba(0,0,0,.25) inset;
+    content:"";
+    left:-2vmin;
+    position:absolute;
+    right:-2vmin;
+    top:-2vmin;
+  }
+  &:after {
+    border-radius:2px;
+    bottom:-2.5vmin;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.25);
+    content:"";
+    left:-2.5vmin;
+    position:absolute;
+    right:-2.5vmin;
+    top:-2.5vmin;
+  }
+}`+
+
+      
+      `.easyimage-frame-1 img {
+  border:solid 2px;
+  border-bottom-color:#ffe;
+  border-left-color:#eed;
+  border-right-color:#eed;
+  border-top-color:#ccb;
+  max-height:100%;
+  max-width:100%;
+}`
+      );
+
+    CKEDITOR.replace('editor1', {
+      extraPlugins: 'easyimage',
+      removePlugins: 'image',
+      removeDialogTabs: 'link:advanced',
+      toolbar: [{
+          name: 'document',
+          items: ['Undo', 'Redo']
+        },
+        {
+          name: 'styles',
+          items: ['Format']
+        },
+        {
+          name: 'basicstyles',
+          items: ['Bold', 'Italic', 'Strike', '-', 'RemoveFormat']
+        },
+        {
+          name: 'paragraph',
+          items: ['NumberedList', 'BulletedList']
+        },
+        {
+          name: 'links',
+          items: ['Link', 'Unlink']
+        },
+        {
+          name: 'insert',
+          items: ['EasyImageUpload']
+        }
+      ],
+      height: 630,
+      cloudServices_uploadUrl: 'https://33333.cke-cs.com/easyimage/upload/',
+      // Note: this is a token endpoint to be used for CKEditor 4 samples only. Images uploaded using this token may be deleted automatically at any moment.
+      // To create your own token URL please visit https://ckeditor.com/ckeditor-cloud-services/.
+      cloudServices_tokenUrl: 'https://33333.cke-cs.com/token/dev/ijrDsqFix838Gh3wGO3F77FSW94BwcLXprJ4APSp3XQ26xsUHTi0jcb1hoBt',
+      easyimage_styles: {
+        frame1:{
+          group:'easyimage-frames',
+          attributes:{
+            'class':'easyimage-frame-1'
+          },
+          label:'Frame',
+          icon:'https://localhost/ckeditor_customization/images/frame_icon.png',
+          iconHiDpi:'https://localhost/ckeditor_customization/images/frame_icon.png'
+        },
+        gradient1: {
+          group: 'easyimage-gradients',
+          attributes: {
+            'class': 'easyimage-gradient-1'
+          },
+          label: 'Blue Gradient',
+          icon: 'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/easyimage/icons/gradient1.png',
+          iconHiDpi: 'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/easyimage/icons/hidpi/gradient1.png'
+        },
+        gradient2: {
+          group: 'easyimage-gradients',
+          attributes: {
+            'class': 'easyimage-gradient-2'
+          },
+          label: 'Pink Gradient',
+          icon: 'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/easyimage/icons/gradient2.png',
+          iconHiDpi: 'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/easyimage/icons/hidpi/gradient2.png'
+        },
+        noGradient: {
+          group: 'easyimage-gradients',
+          attributes: {
+            'class': 'easyimage-no-gradient'
+          },
+          label: 'No Gradient',
+          icon: 'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/easyimage/icons/nogradient.png',
+          iconHiDpi: 'https://ckeditor.com/docs/ckeditor4/4.16.1/examples/assets/easyimage/icons/hidpi/nogradient.png'
+        }
+      },
+      easyimage_toolbar: [
+        'EasyImageFull',
+        'EasyImageSide',
+        'EasyImageFrame1',
+        'EasyImageGradient1',
+        'EasyImageGradient2',
+        'EasyImageNoGradient',
+        'EasyImageAlt'
+      ]
+    });
+  </script>
+</body>
+
+</html>
